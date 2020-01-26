@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Libraries used
+
+1. **husky lint-staged prettier**  are used to ensure style consistancy accross the commits
+2. **redux**  was really not necessary for this project. It was added for demo purposes.
+3. **redux-saga** is a redux middleware used to handle easily side-effects like api-calls.
+3. **styled-component** was added to comply to the stack.
+4. **prop-types** is used to enforce components props consistency. This is really important and can also act like a doc.
+
 ## Available Scripts
 
 In the project directory, you can run:
