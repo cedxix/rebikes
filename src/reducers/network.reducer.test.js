@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { networkActions } from './../actions';
 import networksReducer from './network.reducer';
 
