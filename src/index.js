@@ -5,15 +5,28 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
-import { compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 
-const isProductionMode = process.env.NODE_ENV !== 'production';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
+
+const isProductionMode = process.env.NODE_ENV === 'production';
 const shouldEnableReduxDevTools = !isProductionMode && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = shouldEnableReduxDevTools ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ shouldHotReload: false }) : compose;
+
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
+const enhancers = [
+  applyMiddleware(...middlewares),
+];
 const store = createStore(
   reducers,
-  shouldEnableReduxDevTools ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ shouldHotReload: false }) : compose,
+  {},
+  composeEnhancers(...enhancers),
 );
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

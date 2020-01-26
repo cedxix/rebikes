@@ -7,6 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. **redux-saga** is a redux middleware used to handle easily side-effects like api-calls.
 3. **styled-component** was added to comply to the stack.
 4. **prop-types** is used to enforce components props consistency. This is really important and can also act like a doc.
+5. **axios** for HTTP request because it has better features than fetch and to avoid the need of polyfills for fetch.
 
 ## Available Scripts
 
