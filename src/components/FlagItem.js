@@ -17,9 +17,9 @@ const FlagItemContainer = styled.div`
     background-color: ${colors.hover};
   }
 `;
-const Flag = styled.div`
+export const Flag = styled.div`
   background: url(${({country}) => `https://www.countryflags.io/${country}/shiny/48.png`});
-  width: 100%;
+  width: 48px;
   height: 48px;
 `;
 

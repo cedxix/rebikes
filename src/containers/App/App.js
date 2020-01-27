@@ -11,6 +11,7 @@ import { makeSelectCountryCities } from '../../selectors/countrySelectors';
 import { fetchNetworks } from '../../actions/network.actions';
 import { selectCountry } from '../../actions/country.actions';
 
+import { Flag } from './../../components/FlagItem';
 import CountriesList from '../../components/CountryList';
 import colors from '../../styles/colors';
 
@@ -52,7 +53,7 @@ const App = (props) => {
         active={countryCode}
       />
       <AppBody>
-        <AppHeader>Header</AppHeader>
+        <AppHeader><Flag country={countryCode} /></AppHeader>
         <SelectedResults>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
           assumenda atque aut delectus dolores et exercitationem facilis iure
