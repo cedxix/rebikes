@@ -13,6 +13,7 @@ import { selectCountry } from '../../actions/country.actions';
 
 import { Flag } from './../../components/FlagItem';
 import CountriesList from '../../components/CountryList';
+import CityCard from '../../components/CityCard';
 import colors from '../../styles/colors';
 
 const AppContainer = styled.main`
@@ -34,17 +35,17 @@ const AppHeader = styled.div`
   height: 60px;
 `;
 const SelectedResults = styled.div`
-  background: yellow;
+  background: ${colors.darkBackground};
   height: calc(100vh - 60px);
   overflow-y: auto;
 `;
 
-const App = (props) => {
+export const App = (props) => {
   useEffect(() => {
     props.fetchNetworks();
   }, []);
 
-  const { countryCode, cities } = props.selectedCountry;
+  const { countryCode, cities = [] } = props.selectedCountry;
   return (
     <AppContainer role="main">
       <CountriesList
@@ -54,11 +55,8 @@ const App = (props) => {
       />
       <AppBody>
         <AppHeader><Flag country={countryCode} /></AppHeader>
-        <SelectedResults>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-          assumenda atque aut delectus dolores et exercitationem facilis iure
-          minima molestias necessitatibus nesciunt nisi nobis nostrum odio quas
-          rem, voluptatibus voluptatum!
+        <SelectedResults data-testid="citiesList">
+          {cities.map((city, i) =>(<CityCard key={city.id} city={city} />))}
         </SelectedResults>
       </AppBody>
     </AppContainer>
@@ -75,6 +73,7 @@ App.propTypes = {
   }),
 };
 App.defaultProps = {
+  selectedCountry: {},
   countries: {},
   cities: [],
 };

@@ -56,7 +56,7 @@ describe('Given countrySelector', () => {
       test('It should return empty list', () => {
         const country = { ...mockedState.country, selectedCountryCode: null };
         expect(makeSelectCountryCities()({ ...mockedState, country })).toEqual(
-          [],
+          {},
         );
       });
     });
