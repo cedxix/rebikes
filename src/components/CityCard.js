@@ -42,7 +42,7 @@ export const CityCard = (props) => {
       <CityName>{location.city}</CityName>
       <BikeStats>
         <span><u>Companies:</u></span>
-        <span>{` 0 bikes / 114 spots`}</span>
+        <span>{` 0 bikes / 114 spots (not done)`}</span>
       </BikeStats>
       <CompaniesList>
         {company && company.map((companyName) => (
