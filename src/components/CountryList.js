@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -44,4 +44,4 @@ CountryList.defaultProps = {
   countries: {},
 };
 
-export default CountryList;
+export default memo(CountryList)  ;

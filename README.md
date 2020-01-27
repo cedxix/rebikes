@@ -1,5 +1,21 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## What is done
+I tried to tests the maximum elements possible. therefore everything is not tested.
+### Dot it all
+- [x] Follow mockup below as best you can, precise spacing is not important
+- [x] Follow the below color theme as needed
+### Derived data (Do 2)
+- [ ] Display the count of available bikes and the possible total availability
+- [x] Display a list of companies that are in the city
+- [ ] Display an Icon for bike availability percentage
+- [ ] Display and color the percentage available number
+- [x] Filter Countries to only include those that are west of 50° W, or only include East of 50° E
+- [ ] Display some other data from the provided APIs and fit it into the mockup layout
+### Other UX (Do 2)
+- [ ] The first country in the list is selected automatically
+- [x] When data is loading “Loading …” is displayed instead of stale content
+
 ## Libraries used
 
 1. **husky lint-staged prettier**  are used to ensure style consistancy accross the commits
@@ -9,7 +25,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. **prop-types** is used to enforce components props consistency. This is really important and can also act like a doc.
 5. **axios** for HTTP request because it has better features than fetch and to avoid the need of polyfills for fetch.
 
-## Available Scripts
+
+
+## Scripts
 
 In the project directory, you can run:
 

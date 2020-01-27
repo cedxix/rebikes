@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectNetworksByCountry } from '../../selectors/networkSelectors';
+import { makeSelectNetworksByCountry, makeSelectNetworkLoading } from '../../selectors/networkSelectors';
 import { makeSelectCountryCities } from '../../selectors/countrySelectors';
 import { fetchNetworks } from '../../actions/network.actions';
 import { selectCountry } from '../../actions/country.actions';
@@ -48,17 +48,23 @@ export const App = (props) => {
   const { countryCode, cities = [] } = props.selectedCountry;
   return (
     <AppContainer role="main">
-      <CountriesList
-        countries={props.countries}
-        onSelect={props.selectCountry}
-        active={countryCode}
-      />
-      <AppBody>
-        <AppHeader><Flag country={countryCode} /></AppHeader>
-        <SelectedResults data-testid="citiesList">
-          {cities.map((city, i) =>(<CityCard key={city.id} city={city} />))}
-        </SelectedResults>
-      </AppBody>
+      {props.loading ? (
+        <div style={{margin:'10px auto'}}>loading ...</div>
+      ): (
+        <>
+          <CountriesList
+            countries={props.countries}
+            onSelect={props.selectCountry}
+            active={countryCode}
+          />
+          <AppBody>
+            <AppHeader><Flag country={countryCode} /></AppHeader>
+            <SelectedResults data-testid="citiesList">
+              {cities.map((city, i) =>(<CityCard key={city.id} city={city} />))}
+            </SelectedResults>
+          </AppBody>
+        </>
+      )}
     </AppContainer>
   );
 };
@@ -67,12 +73,14 @@ App.propTypes = {
   fetchNetworks: PropTypes.func.isRequired,
   selectCountry: PropTypes.func.isRequired,
   countries: PropTypes.object,
+  loading: PropTypes.bool,
   selectedCountry: PropTypes.shape({
     countryCode: PropTypes.string,
     cities: PropTypes.arrayOf(PropTypes.object),
   }),
 };
 App.defaultProps = {
+  loading: false,
   selectedCountry: {},
   countries: {},
   cities: [],
@@ -84,6 +92,7 @@ const mapDispatchToProps = (dispatch) => ({
   selectCountry: (countryCode) => dispatch(selectCountry(countryCode)),
 });
 const mapStateToProps = createStructuredSelector({
+  loading: makeSelectNetworkLoading(),
   countries: makeSelectNetworksByCountry(),
   selectedCountry: makeSelectCountryCities(),
 });

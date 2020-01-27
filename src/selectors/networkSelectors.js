@@ -1,13 +1,17 @@
 import { createSelector } from 'reselect';
 
-export const networksDomain = ({ networks = {} }) => networks.networks;
+export const networksDomain = ({ networks = {} }) => networks;
 
+export const makeSelectNetworkLoading = () => createSelector(
+  networksDomain,
+  ({ loading = false }) => loading,
+);
 export const makeSelectNetworksByCountry = () =>
-  createSelector(networksDomain, (networks = []) => {
-    if (!networks) return {};
+  createSelector(networksDomain, (networks = {}) => {
+    if (!networks.networks) return {};
 
     const countries = {};
-    networks.forEach((network) => {
+    networks.networks.forEach((network) => {
       const { location = {}, company, ...rest } = network;
 
       if(location.longitude <= -50) {
@@ -22,4 +26,4 @@ export const makeSelectNetworksByCountry = () =>
       }
     });
     return countries;
-  });
+});
