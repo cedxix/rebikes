@@ -553,11 +553,4 @@ describe('<CountryList />', () => {
       })
     })
   });
-  describe('Given a component is selected', () => {
-    test('Should mark element as selected', () => {
-      const { getByTestId } = render(<CountryList {...defaultProps} active="CA" />);
-      expect(getByTestId(/CA/gi)).toHaveClass('active')
-    })
-  });
-
 });

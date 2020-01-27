@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import colors from './../styles/colors';
+import FlagItem from './FlagItem';
 
 const CountryContainer = styled.div`
   background-color: ${colors.sidebar};
@@ -12,42 +13,22 @@ const CountryContainer = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 `;
-const CountryUl = styled.ul`
+const CountryUl = styled.div`
   margin: 0;
   padding: 0;
-`;
-const FlagItem = styled.li`
-  margin: 0;
-  padding: 0 5px;
-  cursor: pointer;
-  text-align: center;
-  
-  &.active {
-    background-color: ${colors.selected};
-  }
-
-  &:hover {
-    background-color: ${colors.hover};
-  }
-`;
-const Flag = styled.div`
-  background: url(${({country}) => `https://www.countryflags.io/${country}/shiny/48.png`});
-  width: 100%;
-  height: 48px;
 `;
 
 export const CountryList = (props) => (
   <CountryContainer >
     <CountryUl data-testid="countryListUl">
       {Object.keys(props.countries).map((countryCode) => {
-        const isActive = props.active === countryCode;
         return (
           <FlagItem
             key={countryCode}
-            className={isActive ? 'active': ''}
-            onClick={() => props.onSelect(countryCode)}
-            data-testid={countryCode}
-          ><Flag country={countryCode}  /></FlagItem>
+            countryCode={countryCode}
+            isActive={props.active === countryCode}
+            onSelect={props.onSelect}
+          />
         );
       })}
     </CountryUl>
