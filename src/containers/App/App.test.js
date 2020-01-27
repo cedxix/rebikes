@@ -103,6 +103,14 @@ describe('<App />', () => {
       expect(getByTestId(/citiesList/gi).firstChild).toBeFalsy();
     });
   });
+  describe('Given the network are loading', () => {
+    test('It should render loading...', () => {
+      const { getByText, queryByTestId } = render(<App {...defaultProps} loading />);
+
+      expect(getByText(/loading .../gi)).toBeTruthy();
+      expect(queryByTestId(/citiesList/gi)).toBeFalsy();
+    })
+  });
   describe('Given a country is selected', () => {
     const selectedCountry = {
       "countryCode": "CA",
