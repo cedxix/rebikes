@@ -7,13 +7,13 @@ import colors from './../styles/colors';
 const CityCardContainer = styled.div`
   color: ${colors.text};
   padding: 10px 15px;
-  margin: 15px auto;  
+  margin: 15px auto;
   max-width: 60%;
-  
+
   background: ${colors.lightBackground};
-  box-shadow: 0px 2px 8px 0px ${colors.dropShadow}; 
-  border-radius: 2px; 
-  
+  box-shadow: 0px 2px 8px 0px ${colors.dropShadow};
+  border-radius: 2px;
+
   display: flex;
   flex: 1 1 auto;
   flex-flow: column nowrap;
@@ -41,16 +41,19 @@ export const CityCard = (props) => {
     <CityCardContainer>
       <CityName>{location.city}</CityName>
       <BikeStats>
-        <span><u>Companies:</u></span>
+        <span>
+          <u>Companies:</u>
+        </span>
         <span>{` 0 bikes / 114 spots (not done)`}</span>
       </BikeStats>
       <CompaniesList>
-        {company && company.map((companyName) => (
-          <div key={companyName}>{companyName}</div>
-        ))}
+        {company &&
+          company.map((companyName) => (
+            <div key={companyName}>{companyName}</div>
+          ))}
       </CompaniesList>
     </CityCardContainer>
-  )
+  );
 };
 
 CityCard.propTypes = {

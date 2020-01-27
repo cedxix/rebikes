@@ -6,7 +6,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectNetworksByCountry, makeSelectNetworkLoading } from '../../selectors/networkSelectors';
+import {
+  makeSelectNetworksByCountry,
+  makeSelectNetworkLoading,
+} from '../../selectors/networkSelectors';
 import { makeSelectCountryCities } from '../../selectors/countrySelectors';
 import { fetchNetworks } from '../../actions/network.actions';
 import { selectCountry } from '../../actions/country.actions';
@@ -49,8 +52,8 @@ export const App = (props) => {
   return (
     <AppContainer role="main">
       {props.loading ? (
-        <div style={{margin:'10px auto'}}>loading ...</div>
-      ): (
+        <div style={{ margin: '10px auto' }}>loading ...</div>
+      ) : (
         <>
           <CountriesList
             countries={props.countries}
@@ -58,9 +61,13 @@ export const App = (props) => {
             active={countryCode}
           />
           <AppBody>
-            <AppHeader><Flag country={countryCode} /></AppHeader>
+            <AppHeader>
+              <Flag country={countryCode} />
+            </AppHeader>
             <SelectedResults data-testid="citiesList">
-              {cities.map((city, i) =>(<CityCard key={city.id} city={city} />))}
+              {cities.map((city, i) => (
+                <CityCard key={city.id} city={city} />
+              ))}
             </SelectedResults>
           </AppBody>
         </>

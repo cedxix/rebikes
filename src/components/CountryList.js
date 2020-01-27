@@ -19,7 +19,7 @@ const CountryUl = styled.div`
 `;
 
 export const CountryList = (props) => (
-  <CountryContainer >
+  <CountryContainer>
     <CountryUl data-testid="countryListUl">
       {Object.keys(props.countries).map((countryCode) => {
         return (
@@ -44,4 +44,4 @@ CountryList.defaultProps = {
   countries: {},
 };
 
-export default memo(CountryList)  ;
+export default memo(CountryList);

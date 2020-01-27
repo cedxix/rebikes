@@ -1,7 +1,7 @@
 import { makeSelectCountryCities, countryDomain } from './countrySelectors';
 const mockedState = {
   country: {
-    selectedCountryCode: 'RU',
+    selectedCountryCode: 'CA',
     loading: false,
   },
   networks: {
@@ -19,28 +19,16 @@ const mockedState = {
         name: 'Velobike',
       },
       {
-        company: ['Gobike A/S'],
-        href: '/v2/networks/bycyklen',
-        id: 'bycyklen',
+        company: ['Nextbike GmbH'],
+        href: '/v2/networks/nextbike-victoria',
+        id: 'nextbike-victoria',
         location: {
-          city: 'Copenhagen',
-          country: 'DK',
-          latitude: 55.673582,
-          longitude: 12.564984,
+          city: 'Victoria',
+          country: 'CA',
+          latitude: 48.4298,
+          longitude: -123.361,
         },
-        name: 'Bycyklen',
-      },
-      {
-        company: ['Gobike A/S'],
-        href: '/v2/networks/nu-connect',
-        id: 'nu-connect',
-        location: {
-          city: 'Utrecht',
-          country: 'NL',
-          latitude: 52.117,
-          longitude: 5.067,
-        },
-        name: 'Nu-Connect',
+        name: 'Nextbike',
       },
     ],
     loading: false,
@@ -63,21 +51,23 @@ describe('Given countrySelector', () => {
     describe('Given there are country selected', () => {
       test('It should return the cities for that country', () => {
         expect(makeSelectCountryCities()({ ...mockedState })).toEqual({
-          cities: [
+          "cities": [
             {
-              company: ['ЗАО «СитиБайк»'],
-              href: '/v2/networks/velobike-moscow',
-              id: 'velobike-moscow',
-              location: {
-                city: 'Moscow',
-                country: 'RU',
-                latitude: 55.75,
-                longitude: 37.616667,
+              "company": [
+                "Nextbike GmbH"
+              ],
+              "href": "/v2/networks/nextbike-victoria",
+              "id": "nextbike-victoria",
+              "location": {
+                "city": "Victoria",
+                "country": "CA",
+                "latitude": 48.4298,
+                "longitude": -123.361
               },
-              name: 'Velobike',
-            },
+              "name": "Nextbike"
+            }
           ],
-          countryCode: 'RU',
+          "countryCode": "CA"
         });
       });
     });

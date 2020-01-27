@@ -2,6 +2,7 @@ import {
   makeSelectNetworksByCountry,
   networksDomain,
 } from './networkSelectors';
+
 const mockedState = {
   networks: {
     networks: [
@@ -18,28 +19,16 @@ const mockedState = {
         name: 'Velobike',
       },
       {
-        company: ['Gobike A/S'],
-        href: '/v2/networks/bycyklen',
-        id: 'bycyklen',
+        company: ['Nextbike GmbH'],
+        href: '/v2/networks/nextbike-victoria',
+        id: 'nextbike-victoria',
         location: {
-          city: 'Copenhagen',
-          country: 'DK',
-          latitude: 55.673582,
-          longitude: 12.564984,
+          city: 'Victoria',
+          country: 'CA',
+          latitude: 48.4298,
+          longitude: -123.361,
         },
-        name: 'Bycyklen',
-      },
-      {
-        company: ['Gobike A/S'],
-        href: '/v2/networks/nu-connect',
-        id: 'nu-connect',
-        location: {
-          city: 'Utrecht',
-          country: 'NL',
-          latitude: 52.117,
-          longitude: 5.067,
-        },
-        name: 'Nu-Connect',
+        name: 'Nextbike',
       },
     ],
     loading: false,
@@ -48,7 +37,7 @@ const mockedState = {
 
 describe('Given countrySelector', () => {
   test('It should select networks domain', () => {
-    expect(networksDomain(mockedState)).toEqual(mockedState.networks.networks);
+    expect(networksDomain(mockedState)).toEqual(mockedState.networks);
   });
 
   describe('makeSelectNetworksByCountry', () => {
@@ -60,46 +49,18 @@ describe('Given countrySelector', () => {
     describe('Given there are list of networks fetched', () => {
       test('It should group networks by country', () => {
         expect(makeSelectNetworksByCountry()(mockedState)).toEqual({
-          DK: [
+          CA: [
             {
-              company: ['Gobike A/S'],
-              href: '/v2/networks/bycyklen',
-              id: 'bycyklen',
+              company: ['Nextbike GmbH'],
+              href: '/v2/networks/nextbike-victoria',
+              id: 'nextbike-victoria',
               location: {
-                city: 'Copenhagen',
-                country: 'DK',
-                latitude: 55.673582,
-                longitude: 12.564984,
+                city: 'Victoria',
+                country: 'CA',
+                latitude: 48.4298,
+                longitude: -123.361,
               },
-              name: 'Bycyklen',
-            },
-          ],
-          NL: [
-            {
-              company: ['Gobike A/S'],
-              href: '/v2/networks/nu-connect',
-              id: 'nu-connect',
-              location: {
-                city: 'Utrecht',
-                country: 'NL',
-                latitude: 52.117,
-                longitude: 5.067,
-              },
-              name: 'Nu-Connect',
-            },
-          ],
-          RU: [
-            {
-              company: ['ЗАО «СитиБайк»'],
-              href: '/v2/networks/velobike-moscow',
-              id: 'velobike-moscow',
-              location: {
-                city: 'Moscow',
-                country: 'RU',
-                latitude: 55.75,
-                longitude: 37.616667,
-              },
-              name: 'Velobike',
+              name: 'Nextbike',
             },
           ],
         });

@@ -9,7 +9,7 @@ const FlagItemContainer = styled.div`
   padding: 0 5px;
   cursor: pointer;
   text-align: center;
-  
+
   &.active {
     background-color: ${colors.selected};
   }
@@ -18,7 +18,8 @@ const FlagItemContainer = styled.div`
   }
 `;
 export const Flag = styled.div`
-  background: url(${({country}) => `https://www.countryflags.io/${country}/shiny/48.png`});
+  background: url(${({ country }) =>
+    `https://www.countryflags.io/${country}/shiny/48.png`});
   width: 48px;
   height: 48px;
 `;
@@ -26,10 +27,11 @@ export const Flag = styled.div`
 export const FlagItem = (props) => (
   <FlagItemContainer
     key={props.countryCode}
-    className={props.isActive ? 'active': ''}
+    className={props.isActive ? 'active' : ''}
     onClick={() => props.onSelect(props.countryCode)}
     data-testid={props.countryCode}
-  ><Flag country={props.countryCode}  />
+  >
+    <Flag country={props.countryCode} />
   </FlagItemContainer>
 );
 
@@ -39,7 +41,7 @@ FlagItem.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
 FlagItem.defaultProps = {
-  isActive: false
+  isActive: false,
 };
 
 export default FlagItem;
