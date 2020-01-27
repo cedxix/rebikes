@@ -14,7 +14,7 @@ export const makeSelectCountryCities = () =>
           networkByCountry[domain.selectedCountryCode]
         )
       ) {
-        return [];
+        return {};
       }
       return {
         countryCode: domain.selectedCountryCode,

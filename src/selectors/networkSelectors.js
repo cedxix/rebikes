@@ -8,9 +8,18 @@ export const makeSelectNetworksByCountry = () =>
 
     const countries = {};
     networks.forEach((network) => {
-      const { location = {}, ...rest } = network;
-      if (!countries[location.country]) countries[location.country] = [];
-      countries[location.country].push({ location, ...rest });
+      const { location = {}, company, ...rest } = network;
+
+      if(location.longitude <= -50) {
+        if (!countries[location.country]) countries[location.country] = [];
+        let companyList = [];
+        if(company && Array.isArray(company)){
+          companyList = company
+        } else if (company) {
+          companyList = [company]
+        }
+        countries[location.country].push({ location, company: companyList, ...rest });
+      }
     });
     return countries;
   });
