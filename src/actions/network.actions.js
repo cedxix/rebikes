@@ -1,7 +1,7 @@
 import {
   FETCH_NETWORKS,
   FETCH_NETWORKS_SUCCESS,
-  FETCH_NETWORKS_ERROR
+  FETCH_NETWORKS_ERROR,
 } from './actions.constant';
 
 export const fetchNetworks = () => ({
@@ -13,12 +13,11 @@ export const fetchNetworksSuccess = ({ networks }) => ({
 });
 export const fetchNetworksError = (error) => ({
   type: FETCH_NETWORKS_ERROR,
-  error
+  error,
 });
-
 
 export default {
   fetchNetworks,
   fetchNetworksSuccess,
-  fetchNetworksError
+  fetchNetworksError,
 };
