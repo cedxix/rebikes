@@ -1,8 +1,6 @@
 import axios from 'axios';
-import config from '../app.config'
-import {
-  fetchNetworks
-} from './cityBikesApi'
+import config from '../app.config';
+import { fetchNetworks } from './cityBikesApi';
 
 jest.mock('axios', () => ({
   get: jest.fn(),
@@ -11,6 +9,6 @@ jest.mock('axios', () => ({
 describe('cityBikesApi', () => {
   test('It should fetchNetworks', () => {
     fetchNetworks();
-    expect(axios.get).toHaveBeenCalledWith(`${config.API_BASE}networks`)
-  })
+    expect(axios.get).toHaveBeenCalledWith(`${config.API_BASE}networks`);
+  });
 });

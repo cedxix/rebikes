@@ -1,4 +1,5 @@
 import './styles/style.css';
+import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
@@ -12,25 +13,22 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 
 const isProductionMode = process.env.NODE_ENV === 'production';
-const shouldEnableReduxDevTools = !isProductionMode && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const composeEnhancers = shouldEnableReduxDevTools ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ shouldHotReload: false }) : compose;
+const shouldEnableReduxDevTools =
+  !isProductionMode && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = shouldEnableReduxDevTools
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ shouldHotReload: false })
+  : compose;
 
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];
-const enhancers = [
-  applyMiddleware(...middlewares),
-];
-const store = createStore(
-  reducers,
-  {},
-  composeEnhancers(...enhancers),
-);
+const enhancers = [applyMiddleware(...middlewares)];
+const store = createStore(reducers, {}, composeEnhancers(...enhancers));
 
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
   document.getElementById('root'),
 );

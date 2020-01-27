@@ -7,13 +7,16 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
     "react-scripts": "3.3.0",
     "redux": "^4.0.5",
-    "redux-saga": "^1.1.3"
+    "redux-saga": "^1.1.3",
+    "reselect": "^4.0.0",
+    "styled-components": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,7 +48,8 @@
   "prettier": {
     "arrowParens": "always",
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "quoteProps": "as-needed"
   },
   "husky": {
     "hooks": {
@@ -55,7 +59,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css,scss,md}": [
-      "prettier -- single-quote -- write",
+      "prettier --write",
       "git add"
     ]
   }
